@@ -7,13 +7,17 @@ const Navbar = () => {
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <div className="hidden lg:block">
-            <a className="btn btn-ghost normal-case text-xl">Job Point</a>
+            <Link to="/" className="btn btn-ghost normal-case text-xl">
+              Job Point
+            </Link>
           </div>
           <div className="">
-            <img
-              className="hidden lg:block h-10"
-              src="https://tse3.mm.bing.net/th?id=OIP._2Q-CKorip31FVfhftjJ6wHaHa&pid=Api&P=0"
-            />
+            <Link to="/">
+              <img
+                className="hidden lg:block h-10"
+                src="https://tse3.mm.bing.net/th?id=OIP._2Q-CKorip31FVfhftjJ6wHaHa&pid=Api&P=0"
+              />
+            </Link>
           </div>
         </div>
         <div className="flex-none gap-2">
