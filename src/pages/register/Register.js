@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import loginImage from "../../assests/login.svg";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../features/auth/authSlice";
 const Signup = () => {
   const { handleSubmit, register, reset, control } = useForm();
   const password = useWatch({ control, name: "password" });
   const confirmPassword = useWatch({ control, name: "confirmPassword" });
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (
@@ -23,12 +26,13 @@ const Signup = () => {
     }
   }, [password, confirmPassword]);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ email, password }) => {
+    // console.log(data);
+    dispatch(createUser({ email, password }));
   };
 
   return (
-    <div className="flex h-screen items-center pt-14 mt-14">
+    <div className="flex flex-col lg:flex-row h-screen items-center pt-14 mt-14">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>

@@ -1,18 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useDebugValue, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import loginImage from "../../assests/login.svg";
+import { loginUser } from "../../features/auth/authSlice";
 const Login = () => {
+  const { isLoading, email } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const dispatch = useDispatch();
+
+  const onSubmit = ({ email, password }) => {
+    // console.log(data);
+    dispatch(loginUser({ email, password }));
   };
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate("/");
+    }
+  }, [isLoading, email, navigate]);
 
   return (
-    <div className="flex h-screen items-center mt-14">
+    <div className="flex flex-col lg:flex-row h-screen items-center mt-14">
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>

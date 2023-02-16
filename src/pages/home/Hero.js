@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+// import { toast, ToastContainer } from "react-toastify";
 
 const Hero = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const handleEmail = () => {};
   return (
     <div>
       <section class="bg-white dark:bg-gray-900">
@@ -78,14 +81,42 @@ const Hero = () => {
                   placeholder="Enter your email address"
                   class="flex-1 h-10 px-4 py-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none dark:text-gray-200 focus:outline-none focus:placeholder-transparent focus:ring-0"
                 />
-
-                <button
+                {/* <button
                   type="button"
                   class="h-10 px-4 py-2 m-1 text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
+                  onClick={handleEmail}
                 >
                   Join Us
-                </button>
+                </button> */}
+                <label
+                  // onClick={handleEmail}
+                  htmlFor="my-modal-3"
+                  className="btn h-10 px-4 py-2 m-1 text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
+                >
+                  join us
+                </label>
+                <input
+                  type="checkbox"
+                  id="my-modal-3"
+                  className="modal-toggle"
+                />
+                <div className="modal">
+                  <div className="modal-box relative">
+                    <label
+                      htmlFor="my-modal-3"
+                      className="btn btn-sm btn-circle absolute right-2 top-2"
+                    >
+                      ✕
+                    </label>
+                    <h3 className="text-lg text-green-800 font-bold">
+                      Welcome To Our Community!
+                    </h3>
+                  </div>
+                </div>
               </form>
+              {/* {showAlert && (
+               
+              )} */}
             </div>
           </div>
 

@@ -1,7 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { logout } from "../../features/auth/authSlice";
+import auth from "../../firebase/firebase.config";
 
 const Navbar = () => {
+  const { email } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      dispatch(logout());
+    });
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -14,7 +26,7 @@ const Navbar = () => {
           <div className="">
             <Link to="/">
               <img
-                className="hidden lg:block h-10"
+                className="h-10"
                 src="https://tse3.mm.bing.net/th?id=OIP._2Q-CKorip31FVfhftjJ6wHaHa&pid=Api&P=0"
               />
             </Link>
@@ -28,44 +40,41 @@ const Navbar = () => {
               className="input input-bordered"
             />
           </div>
-          <ul className="flex gap-5">
-            <li>
-              <Link className="hover:text-primary" to="/jobs">
-                Jobs
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
-                to="/login"
-              >
-                Login
-              </Link>
-            </li>
-          </ul>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
-            </label>
-
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
+          <div>
+            <ul className="flex gap-5">
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link className="hover:text-primary" to="/jobs">
+                  Jobs
+                </Link>
               </li>
 
-              <li>
-                <a>Logout</a>
-              </li>
+              {email ? (
+                <li>
+                  <Link
+                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
+            {email && (
+              <div>
+                <p className="text-xl-black overflow-hidden truncate w-11">
+                  {email.user.email}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
