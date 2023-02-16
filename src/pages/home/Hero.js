@@ -108,9 +108,13 @@ const Hero = () => {
                     >
                       ✕
                     </label>
-                    <h3 className="text-lg text-green-800 font-bold">
-                      Welcome To Our Community!
-                    </h3>
+                    <div
+                      class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
+                      role="success"
+                    >
+                      <p class="font-bold">Success!</p>
+                      <p>Welcome to our community</p>
+                    </div>
                   </div>
                 </div>
               </form>
