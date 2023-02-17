@@ -68,13 +68,13 @@ const Navbar = () => {
                 </li>
               )}
             </ul>
-            {email && (
+            {/* {email && (
               <div>
                 <p className="text-xl-black overflow-hidden truncate w-11">
                   {email.user.email}
                 </p>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

@@ -94,6 +94,13 @@ const Signup = () => {
                   </span>
                 </p>
               </div>
+              <button
+                type="submit"
+                className="font-bold text-white py-3 rounded-full bg-primary w-full"
+                // disabled={disabled}
+              >
+                Sign in with Google
+              </button>
             </div>
           </form>
         </div>
