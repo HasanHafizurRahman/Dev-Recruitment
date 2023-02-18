@@ -3,8 +3,10 @@ import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
 import Home from "../pages/home/Home";
 import Jobs from "../pages/job/Jobs";
+import AccountCreator from "../pages/register/AccountCreator";
 import Login from "../pages/register/Login";
 import Signup from "../pages/register/Register";
+import PrivateRoute from "../utils/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +28,22 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/register",
+        element: (
+          <PrivateRoute>
+            <AccountCreator />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/register/:type",
+        element: (
+          <PrivateRoute>
+            <AccountCreator />
+          </PrivateRoute>
+        ),
       },
     ],
   },

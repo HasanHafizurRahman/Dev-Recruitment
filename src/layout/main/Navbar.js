@@ -37,7 +37,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search"
-              className="input input-bordered"
+              className="hidden lg:block input input-bordered"
             />
           </div>
           <div>
