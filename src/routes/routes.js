@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../layout/dashboard/Dashboard";
 import Main from "../layout/main/Main";
 import Home from "../pages/home/Home";
 import Jobs from "../pages/job/Jobs";
@@ -27,6 +28,24 @@ const routes = createBrowserRouter([
         element: <Signup />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    // children: [
+    //   {
+    //     path: "add-job",
+    //     element: <AddJob />,
+    //   },
+    //   {
+    //     path: "employer",
+    //     element: <EmployerDashboard />,
+    //   },
+    //   {
+    //     path: "candidate",
+    //     element: <CandidateDashboard />,
+    //   },
+    // ],
   },
 ]);
 export default routes;
