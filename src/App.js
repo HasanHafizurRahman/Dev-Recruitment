@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import { setUser } from "./features/auth/authSlice";
+import { setUser, toggleLoading } from "./features/auth/authSlice";
 import auth from "./firebase/firebase.config";
 
 import routes from "./routes/routes";
@@ -17,6 +17,8 @@ function App() {
       if (user) {
         console.log(user);
         dispatch(setUser(user.email));
+      } else {
+        dispatch(toggleLoading());
       }
     });
   }, []);

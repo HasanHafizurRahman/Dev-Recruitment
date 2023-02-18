@@ -19,8 +19,8 @@ const AccountCreator = () => {
 
   return (
     <div className="h-screen pt-14">
-      <h1 className="text-center my-10 text-2xl">Continue as ...</h1>
-      <div className="flex flex-col lg:flex-row justify-evenly ">
+      <h1 className="text-center text-2xl">Continue as ...</h1>
+      <div className="flex flex-col lg:flex-row justify-evenly pb-10 mb-10">
         <div
           onClick={() => navigate("/register/candidate")}
           className="flex flex-col justify-between transition-all rounded-lg p-5 border border-white hover:border-primary hover:shadow-2xl hover:scale-105 group"

@@ -6,7 +6,7 @@ import { logout } from "../../features/auth/authSlice";
 import auth from "../../firebase/firebase.config";
 
 const Navbar = () => {
-  const { email } = useSelector((state) => state.auth);
+  const { email, role } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleLogout = () => {
     signOut(auth).then(() => {
@@ -67,13 +67,23 @@ const Navbar = () => {
                   </Link>
                 </li>
               )}
-              {email && (
+              {email && role && (
                 <li>
                   <Link
                     to="/dashboard"
                     className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all "
                   >
                     Dashboard
+                  </Link>
+                </li>
+              )}
+              {email && !role && (
+                <li>
+                  <Link
+                    to="/register"
+                    className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all "
+                  >
+                    Register
                   </Link>
                 </li>
               )}
