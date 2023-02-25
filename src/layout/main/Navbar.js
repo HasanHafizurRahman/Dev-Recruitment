@@ -6,7 +6,9 @@ import { logout } from "../../features/auth/authSlice";
 import auth from "../../firebase/firebase.config";
 
 const Navbar = () => {
-  const { email, role } = useSelector((state) => state.auth);
+  const {
+    user: { email, role },
+  } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleLogout = () => {
     signOut(auth).then(() => {

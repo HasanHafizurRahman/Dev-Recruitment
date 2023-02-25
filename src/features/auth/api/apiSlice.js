@@ -2,6 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({}),
-  endpoint: (builder) => ({}),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:5000",
+    // https://jobbox-server-five.vercel.app
+  }),
+  endpoints: (builder) => ({}),
 });
+
+export default apiSlice;
