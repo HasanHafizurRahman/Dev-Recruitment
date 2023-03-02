@@ -8,23 +8,43 @@ const JobCard = () => {
 
   return (
     <div>
-      {data?.data?.map(({ position, companyName, experience, _id }) => (
-        <div className="card w-80 bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h2 className="card-title">Position: {position}</h2>
-            <p>Company: {companyName}</p>
-            <p>Experience: {experience}</p>
-            <div className="card-actions justify-end">
+      {data?.data?.map(
+        ({
+          position,
+          companyName,
+          location,
+          employmentType,
+          experience,
+          _id,
+        }) => (
+          <div
+            key={_id}
+            className="border border-gray-300 shadow-xl p-5 rounded-2xl my-5"
+          >
+            <div className="flex justify-between">
+              <div>
+                <p className="text-xl">{position}</p>
+                <small>
+                  by{" "}
+                  <span className="font-semibold hover: cursor-pointer hover:underline transition-all">
+                    {companyName}
+                  </span>
+                </small>
+              </div>
+              <p>{location}</p>
+            </div>
+            <div className="flex justify-between items-center mt-5">
+              <p className="">{employmentType}</p>
               <button
+                className="btn"
                 onClick={() => navigate(`/job-details/${_id}`)}
-                className="btn btn-ghost"
               >
                 Details
               </button>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      )}
     </div>
   );
 };

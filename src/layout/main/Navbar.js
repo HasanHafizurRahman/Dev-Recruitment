@@ -35,17 +35,20 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex-none gap-2">
-          <div className="form-control">
+          {/* <div className="form-control">
             <input
               type="text"
               placeholder="Search"
               className="hidden lg:block input input-bordered"
             />
-          </div>
+          </div> */}
           <div>
             <ul className="flex gap-5">
               <li>
-                <Link className="hover:text-primary" to="/jobs">
+                <Link
+                  className="hover:text-primary text-xs lg:text-xl"
+                  to="/jobs"
+                >
                   Jobs
                 </Link>
               </li>
@@ -53,7 +56,7 @@ const Navbar = () => {
               {email ? (
                 <li>
                   <Link
-                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all text-xs lg:text-xl"
                     onClick={handleLogout}
                   >
                     Logout
@@ -62,7 +65,7 @@ const Navbar = () => {
               ) : (
                 <li>
                   <Link
-                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    className="border border-black px-2 py-1 rounded-full hover:border-primary hover:text-white hover:bg-primary hover:px-4 transition-all text-xs lg:text-xl"
                     to="/login"
                   >
                     Login
@@ -73,7 +76,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/dashboard"
-                    className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all text-xs lg:text-xl"
                   >
                     Dashboard
                   </Link>
@@ -83,7 +86,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/register"
-                    className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all "
+                    className="border border-gray-700 px-2 py-1 rounded-full hover:border-primary bg-slate-100 hover:text-white hover:bg-primary hover:px-4 transition-all text-xs lg:text-xl"
                   >
                     Register
                   </Link>
