@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import meeting from "../../assests/meeting.jpg";
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
-import { useJobByIdQuery } from "../../features/job/jobApi";
+import { useApplyMutation, useJobByIdQuery } from "../../features/job/jobApi";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -15,6 +15,10 @@ const JobDetails = () => {
   const { register, handleSubmit, reset } = useForm();
   const { handleSubmit: replyHandleSubmit } = useForm();
   const { data, isLoading, isError } = useJobByIdQuery(id);
+  const [
+    apply,
+    { isSuccess: applySuccess, isError: applyError, error: applyErr },
+  ] = useApplyMutation();
   const {
     _id,
     companyName,
@@ -46,7 +50,7 @@ const JobDetails = () => {
       email: user.email,
       jobId: _id,
     };
-    console.log(data);
+    apply(data);
   };
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
@@ -68,8 +72,8 @@ const JobDetails = () => {
           <div>
             <h1 className="text-primary text-lg font-medium mb-3">Skills</h1>
             <ul>
-              {skills.map((skill) => (
-                <li className="flex items-center">
+              {skills?.map((skill, i) => (
+                <li key={i} className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
               ))}
@@ -80,7 +84,7 @@ const JobDetails = () => {
               Requirements
             </h1>
             <ul>
-              {requirements.map((skill) => (
+              {requirements?.map((skill) => (
                 <li className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
@@ -92,7 +96,7 @@ const JobDetails = () => {
               Responsibilities
             </h1>
             <ul>
-              {responsibilities.map((skill) => (
+              {responsibilities?.map((skill) => (
                 <li className="flex items-center">
                   <BsArrowRightShort /> <span>{skill}</span>
                 </li>
@@ -107,7 +111,7 @@ const JobDetails = () => {
               General Q&A
             </h1>
             <div className="text-primary my-2">
-              {queries.map(({ question, email, reply, id }) => (
+              {queries?.map(({ question, email, reply, id }) => (
                 <div>
                   <small>{email}</small>
                   <p className="text-lg font-medium">{question}</p>
