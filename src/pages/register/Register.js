@@ -13,7 +13,13 @@ const Signup = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  const { isError, error } = useSelector((state) => state.auth);
+  const {
+    user: { email },
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (
@@ -29,9 +35,9 @@ const Signup = () => {
     }
   }, [password, confirmPassword]);
 
-  const onSubmit = ({ email, password }) => {
+  const onSubmit = (data) => {
     // console.log(data);
-    dispatch(createUser({ email, password }));
+    dispatch(createUser({ email: data.email, password: data.password }));
   };
 
   // error toast message

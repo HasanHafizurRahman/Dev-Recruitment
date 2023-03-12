@@ -7,12 +7,10 @@ import { useSelector } from "react-redux";
 
 const EmployerRegistration = () => {
   const {
-    user: { email },
+    user: { email, role },
   } = useSelector((state) => state.auth);
-  const { handleSubmit, register, control } = useForm({
-    defaultValues: {
-      email,
-    },
+  const { handleSubmit, register, control, reset } = useForm({
+    defaultValues: { email },
   });
   const [countries, setCountries] = useState([]);
   const term = useWatch({ control, name: "term" });
@@ -80,13 +78,13 @@ const EmployerRegistration = () => {
             </label>
             <input type="text" id="lastName" {...register("lastName")} />
           </div>
-          <div className="flex flex-col w-full max-w-xs">
+          <div className="flex  flex-col w-full max-w-xs">
             <label className="mb-2" htmlFor="email">
               Email
             </label>
             <input
+              className="bg-slate-200 cursor-not-allowed"
               disabled
-              className="cursor-not-allowed"
               type="email"
               id="email"
               {...register("email")}

@@ -8,9 +8,13 @@ import { useNavigate } from "react-router-dom";
 import loginImage from "../../assests/login.svg";
 import { googleLogin, loginUser } from "../../features/auth/authSlice";
 const Login = () => {
-  const { isLoading, email, isError, error } = useSelector(
-    (state) => state.auth
-  );
+  const {
+    user: { email },
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
