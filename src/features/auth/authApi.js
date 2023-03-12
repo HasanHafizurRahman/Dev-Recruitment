@@ -17,8 +17,13 @@ const authApi = apiSlice.injectEndpoints({
           console.log(error);
         }
       },
+      getRegisteredUser: build.query({
+        query: (email) => ({
+          url: `/user/${email}`,
+        }),
+      }),
     }),
   }),
 });
 
-export const { useRegisterMutation } = authApi;
+export const { useRegisterMutation, useGetRegisteredUserQuery } = authApi;
